@@ -28,14 +28,15 @@ SELECT TOP 5
 	, COUNT(*) AS TotalRows
 	, SUM(ps.Tariff) AS TotalTariff
 	, AVG(ps.Tariff) AS AverageTariff
-FROM 
+FROM
 	PatientStay ps
 GROUP BY ps.Hospital, ps.Ward
 ORDER BY TotalTariff DESC
 
-SELECT * FROM DimHospitalBad
+SELECT *
+FROM DimHospitalBad
 
-SELECT 
+SELECT
 	ps.PatientId
 	, ps.AdmittedDate
 	, dh.HospitalType
@@ -43,7 +44,7 @@ SELECT
 	, dh.HospitalSize
 	, ps.Hospital
 	, dh.Hospital
-FROM 
+FROM
 	PatientStay ps LEFT JOIN DimHospitalBad dh ON ps.Hospital = dh.Hospital
 
 /*
